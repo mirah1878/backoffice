@@ -24,14 +24,11 @@ function Illustration() {
   
       console.log("Full response:", response);
       
-      // Si l'authentification réussit, récupérez le token depuis la réponse
-      const token = response.data.access_token; // Utilisation de response.data.access_token
+      const token = response.data.access_token; 
       
       console.log("Token récupéré :", token);
       
-      // Stockez le token dans le stockage local
       sessionStorage.setItem('token', token);
-      // Redirigez l'utilisateur vers /dashboard
       navigate("/dashboard");
     } catch (error) {
       console.error("Login error", error);
@@ -57,17 +54,17 @@ function Illustration() {
             name="username"
             placeholder="admin"
             size="large"
-            value="admin"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
         </ArgonBox>
         <ArgonBox mb={2}>
           <ArgonInput
             type="password"
-            placeholder="123456789"
+            placeholder="password"
             name="password"
             size="large"
-            value="123456789"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </ArgonBox>
