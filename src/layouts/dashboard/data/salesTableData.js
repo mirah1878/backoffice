@@ -1,44 +1,44 @@
-/**
-=========================================================
-* Argon Dashboard 2 MUI - v3.0.1
-=========================================================
+// dashboard/data
 
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-material-ui
-* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+import { useState, useEffect } from 'react';
 
-Coded by www.creative-tim.com
+const SalesTableData = () => {
+  const [data, setData] = useState([]);
 
- =========================================================
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log('Fetching data...');
+        const token = sessionStorage.getItem('token');
+        console.log('Token retrieved:', token);
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
+        const cleanedToken = token ? token.replace(/"/g, '') : '';
+        console.log('Cleaned token:', cleanedToken);
 
-// Countries flags
-import US from "assets/images/icons/flags/US.png";
-import DE from "assets/images/icons/flags/DE.png";
-import GB from "assets/images/icons/flags/GB.png";
-import BR from "assets/images/icons/flags/BR.png";
+        const response = await fetch('https://0801241705-production.up.railway.app/stat/annonce-par-categorie', {
+          headers: {
+            'Authorization': `Bearer ${cleanedToken}`,
+          },
+        });
 
-const salesTableData = [
-  {
-    country: [US, "Madagascar"],
-    sales: 2500,
-    value: "$230,900",
-    bounce: "29.9%",
-  },
-  {
-    country: [DE, "germany"],
-    sales: "3.900",
-    value: "$440,000",
-    bounce: "40.22%",
-  },
-  {
-    country: [GB, "great britain"],
-    sales: "1.400",
-    value: "$190,700",
-    bounce: "23.44%",
-  },
-  { country: [BR, "brasil"], sales: 562, value: "$143,960", bounce: "32.14%" },
-];
+        console.log('Response:', response);
 
-export default salesTableData;
+        if (response.ok) {
+          const result = await response.json();
+          console.log('Data fetched successfully:', result);
+          setData(result);
+        } else {
+          console.error('Error fetching data:', response.status);
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  return data;
+};
+
+export default SalesTableData;
