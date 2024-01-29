@@ -46,7 +46,8 @@ function Illustration() {
       illustration={{
         image: bgImage,
         description:
-          "Vendez votre voiture ici.",
+          "Un bon vendeur de voitures ne vend pas seulement des véhicules, " +
+          "il crée des expériences mémorables et des relations durables."
       }}
     >
       <ArgonBox component="form" role="form">
@@ -54,19 +55,19 @@ function Illustration() {
           <ArgonInput
             type="email"
             name="username"
-            placeholder="Email"
+            placeholder="admin"
             size="large"
-            value={email}
+            value="admin"
             onChange={(e) => setEmail(e.target.value)}
           />
         </ArgonBox>
         <ArgonBox mb={2}>
           <ArgonInput
             type="password"
-            placeholder="Password"
+            placeholder="123456789"
             name="password"
             size="large"
-            value={password}
+            value="123456789"
             onChange={(e) => setPassword(e.target.value)}
           />
         </ArgonBox>
