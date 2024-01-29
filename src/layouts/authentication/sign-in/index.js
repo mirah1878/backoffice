@@ -11,8 +11,8 @@ const bgImage =
 
 function Illustration() {
   const [rememberMe, setRememberMe] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("admin");
+  const [password, setPassword] = useState("123456789");
   const navigate = useNavigate();
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -52,7 +52,6 @@ function Illustration() {
           <ArgonInput
             type="email"
             name="username"
-            placeholder="admin"
             size="large"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
