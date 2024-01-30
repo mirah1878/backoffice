@@ -30,7 +30,7 @@ function Default() {
             <SalesTable rows={salesData} />
           </Grid>
           <Grid item xs={12} md={4}>
-            <CategoriesList title="categories" categories={categoriesListData} />
+            {/*<CategoriesList title="categories" categories={categoriesListData} />*/}
           </Grid>
         </Grid>
       </ArgonBox>
